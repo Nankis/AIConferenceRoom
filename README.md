@@ -44,10 +44,14 @@ __数据库使用的是MySQL5.6以上的版本__
 __linux版本建议选centos7以上__
 
 后台自动运行可选择:
->\# celery worker -A fuwu -l debug -P eventlet  进入目录启动    pip install eventlet后需要在运行时添加额外参数 -P eventlet
->\# celery -A <mymodule> worker -l info -P eventlet    win10环境下用此命令运行
->\# celery worker -A fuwu -l info -P eventlet linux环境下用此行命令运行
+ 进入目录启动    pip install eventlet后需要在运行时添加额外参数 -P eventlet
+>\# celery worker -A fuwu -l debug -P eventlet 
 
+ win10环境下用此命令运行
+>\# celery -A <mymodule> worker -l info -P eventlet   
+  
+ linux环境下用此行命令运行
+>\# celery worker -A fuwu -l info -P eventlet 
 
 也可以使用Supervisor后台运行Celery和Redis:
 1、安装Supervisor
