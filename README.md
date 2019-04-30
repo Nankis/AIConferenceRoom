@@ -40,9 +40,9 @@ pip freeze > requirements.txt　　导出该环境下所有依赖到requirements
 >pip install -r requirements.txt   
 该过程可能因为系统的版本不同而有报错,注意看报错信息,然后解决即可.
 
-数据库使用的是MySQL5.6以上的版本
+__数据库使用的是MySQL5.6以上的版本__
 
-linux版本建议选centos7以上
+__linux版本建议选centos7以上__
 
 后台自动运行可选择:
 >\# celery worker -A fuwu -l debug -P eventlet  进入目录启动    pip install eventlet后需要在运行时添加额外参数 -P eventlet
