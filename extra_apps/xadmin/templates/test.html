@@ -1,0 +1,663 @@
+{% load i18n xadmin_tags %}
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <meta name="robots" content="NONE,NOARCHIVE"/>
+    <title>主页面 | 将军令后台</title>
+
+    <link href="/static/xadmin/vendor/bootstrap/css/bootstrap.css" type="text/css" media="screen" rel="stylesheet"/>
+
+    <link rel="stylesheet" type="text/css" id="site-theme" href="/static/xadmin/css/themes/bootstrap-xadmin.css"/>
+
+    <link href="/static/xadmin/vendor/font-awesome/css/font-awesome.css" type="text/css" media="screen"
+          rel="stylesheet"/>
+    <link href="/static/xadmin/css/xadmin.main.css" type="text/css" media="screen" rel="stylesheet"/>
+    <link href="/static/xadmin/css/xadmin.plugins.css" type="text/css" media="screen" rel="stylesheet"/>
+    <link href="/static/xadmin/css/xadmin.responsive.css" type="text/css" media="screen" rel="stylesheet"/>
+    <link href="/static/xadmin/css/xadmin.page.dashboard.css" type="text/css" media="screen" rel="stylesheet"/>
+
+    <script type="text/javascript" src="/static/xadmin/vendor/jquery/jquery.js"></script>
+
+    <script type="text/javascript">
+        window.__admin_media_prefix__ = "/static/xadmin/";
+        window.__admin_path_prefix__ = "/api/admin/";
+        window.__admin_language_code__ = "";
+    </script>
+    <script type="text/javascript" src="/api/admin/jsi18n/"></script>
+
+
+</head>
+<body class="dashboard">
+
+<!-- Header -->
+
+<div id="top-nav" class="navbar navbar-xs navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">将军令后台</a>
+    </div>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav pull-right">
+
+
+            <li class="dropdown g-add">
+                <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
+                    <i class="fa fa-plus"></i> <span class="hide-sm">增加 <i class="caret"></i></span></a>
+                <ul id="g-add-menu" class="dropdown-menu" role="menu">
+
+                    <li><a href="/api/admin/xadmin/userwidget/add/"><i class="fa fa-plus"></i> 增加 用户小组件</a></li>
+
+                    <li><a href="/api/admin/xadmin/bookmark/add/"><i class="fa fa-plus"></i> 增加 书签</a></li>
+
+                    <li><a href="/api/admin/auth/group/add/"><i class="fa fa-plus"></i> 增加 组</a></li>
+
+                    <li><a href="/api/admin/auth/permission/add/"><i class="fa fa-plus"></i> 增加 权限</a></li>
+
+                    <li><a href="/api/admin/task/task/add/"><i class="fa fa-plus"></i> 增加 任务</a></li>
+
+                    <li><a href="/api/admin/task/othertask/add/"><i class="fa fa-plus"></i> 增加 其他任务</a></li>
+
+                    <li><a href="/api/admin/task/bannertask/add/"><i class="fa fa-plus"></i> 增加 轮播任务</a></li>
+
+                    <li><a href="/api/admin/task/notice/add/"><i class="fa fa-plus"></i> 增加 网站公告</a></li>
+
+                    <li><a href="/api/admin/task/imagetype/add/"><i class="fa fa-plus"></i> 增加 图片类型</a></li>
+
+                    <li><a href="/api/admin/user/userprofile/add/"><i class="fa fa-plus"></i> 增加 用户</a></li>
+
+                    <li><a href="/api/admin/user/school/add/"><i class="fa fa-plus"></i> 增加 学校</a></li>
+
+                    <li><a href="/api/admin/user/userstatusdate/add/"><i class="fa fa-plus"></i> 增加 会员到期设置</a></li>
+
+                    <li><a href="/api/admin/user_operation/usertaskreceive/add/"><i class="fa fa-plus"></i> 增加 任务详情</a>
+                    </li>
+
+                    <li><a href="/api/admin/user_operation/vipcode/add/"><i class="fa fa-plus"></i> 增加 充值码</a></li>
+
+                    <li><a href="/api/admin/user_operation/wxorder/add/"><i class="fa fa-plus"></i> 增加 微信订单</a></li>
+
+                    <li><a href="/api/admin/user_operation/taskimage/add/"><i class="fa fa-plus"></i> 增加 上传图片</a></li>
+
+                    <li><a href="/api/admin/xadmin/usersettings/add/"><i class="fa fa-plus"></i> 增加 用户设置</a></li>
+
+                    <li><a href="/api/admin/xadmin/log/add/"><i class="fa fa-plus"></i> 增加 日志记录</a></li>
+
+                    <li><a href="/api/admin/social_django/usersocialauth/add/"><i class="fa fa-plus"></i> 增加 第三方登录</a>
+                    </li>
+
+                </ul>
+            </li>
+
+
+            <li class="dropdown g-theme">
+                <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
+                    <i class="fa fa-magic"></i> <span class="hide-sm">主题 <i class="caret"></i></span></a>
+                <ul id="g-theme-menu" class="dropdown-menu" role="menu">
+
+                    <li class="active"><a data-css-href="/static/xadmin/css/themes/bootstrap-xadmin.css">默认</a></li>
+
+                    <li><a data-css-href="/static/xadmin/css/themes/bootstrap-theme.css">Bootstrap2</a></li>
+
+                    <li><a data-css-href="https://bootswatch.com/3/cerulean/bootstrap.min.css">Cerulean</a></li>
+
+                    <li><a data-css-href="https://bootswatch.com/3/cosmo/bootstrap.min.css">Cosmo</a></li>
+
+                    <li><a data-css-href="https://bootswatch.com/3/cyborg/bootstrap.min.css">Cyborg</a></li>
+
+                    <li><a data-css-href="https://bootswatch.com/3/darkly/bootstrap.min.css">Darkly</a></li>
+
+                    <li><a data-css-href="https://bootswatch.com/3/flatly/bootstrap.min.css">Flatly</a></li>
+
+                    <li><a data-css-href="https://bootswatch.com/3/journal/bootstrap.min.css">Journal</a></li>
+
+                    <li><a data-css-href="https://bootswatch.com/3/lumen/bootstrap.min.css">Lumen</a></li>
+
+                    <li><a data-css-href="https://bootswatch.com/3/paper/bootstrap.min.css">Paper</a></li>
+
+                    <li><a data-css-href="https://bootswatch.com/3/readable/bootstrap.min.css">Readable</a></li>
+
+                    <li><a data-css-href="https://bootswatch.com/3/sandstone/bootstrap.min.css">Sandstone</a></li>
+
+                    <li><a data-css-href="https://bootswatch.com/3/simplex/bootstrap.min.css">Simplex</a></li>
+
+                    <li><a data-css-href="https://bootswatch.com/3/slate/bootstrap.min.css">Slate</a></li>
+
+                    <li><a data-css-href="https://bootswatch.com/3/spacelab/bootstrap.min.css">Spacelab</a></li>
+
+                    <li><a data-css-href="https://bootswatch.com/3/superhero/bootstrap.min.css">Superhero</a></li>
+
+                    <li><a data-css-href="https://bootswatch.com/3/united/bootstrap.min.css">United</a></li>
+
+                    <li><a data-css-href="https://bootswatch.com/3/yeti/bootstrap.min.css">Yeti</a></li>
+
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
+            <strong>{% trans 'Welcome,' %} {% firstof user.first_name user.username %}</strong> <span class="caret"></span></a>
+                <ul id="g-account-menu" class="dropdown-menu" role="menu">
+                    <li><a href="/api/admin/account/password/"><i class="fa fa-key"></i> 更改密码</a></li>
+                </ul>
+            </li>
+
+            <li><a href="/api/admin/logout/"><i class="show-sm fa fa-sign-out"></i><span class="hide-sm">注销</span></a>
+            </li>
+        </ul>
+
+
+        <form method="get" class="top-search-form navbar-form navbar-left" id="g-search">
+            <div class="input-group">
+                <input name="_q_" class="form-control" type="text">
+                <span class="input-group-btn">
+      <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-search"></i> 搜索 <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+
+          <li><a data-action="/api/admin/auth/group/"><i class="fa fa-search"></i> 搜索组</a></li>
+
+          <li><a data-action="/api/admin/task/task/"><i class="fa fa-search"></i> 搜索任务列表</a></li>
+
+          <li><a data-action="/api/admin/task/othertask/"><i class="fa fa-search"></i> 搜索其他任务</a></li>
+
+          <li><a data-action="/api/admin/user/userprofile/"><i class="fa fa-search"></i> 搜索用户列表</a></li>
+
+          <li><a data-action="/api/admin/user/school/"><i class="fa fa-search"></i> 搜索学校列表</a></li>
+
+          <li><a data-action="/api/admin/user_operation/usertaskreceive/"><i class="fa fa-search"></i> 搜索任务详情列表</a></li>
+
+          <li><a data-action="/api/admin/user_operation/taskimage/"><i class="fa fa-search"></i> 搜索上传图片列表</a></li>
+
+          <li><a data-action="/api/admin/xadmin/log/"><i class="fa fa-search"></i> 搜索日志记录</a></li>
+
+      </ul>
+    </span>
+            </div>
+        </form>
+
+
+    </div>
+</div>
+
+<div id="body-content" class="clearfix row">
+    <div id="left-side" class="col-sm-1 col-md-2">
+
+
+        <ul class="well nav nav-pills nav-stacked nav-sitemenu hide-sm">
+            <li>
+                <a href="/api/admin/"><i class="fa-fw fa fa-home"></i> 首页</a>
+            </li>
+
+            <li class="nav-header ">
+
+                管理面板
+
+            </li>
+
+            <li>
+                <a href="me_test/">
+                    <i class="fa-fw info-sign"></i>
+                    操作</span></a>
+            </li>
+
+
+            <li class="nav-header ">
+
+                任务
+
+            </li>
+
+            <li>
+                <a href="/api/admin/task/task/">
+                    <i class="fa-fw fa fa-tasks"></i>
+                    任务列表</span></a>
+            </li>
+
+            <li>
+                <a href="/api/admin/task/othertask/">
+                    <i class="fa-fw fa fa-tasks"></i>
+                    其他任务</span></a>
+            </li>
+
+            <li>
+                <a href="/api/admin/task/bannertask/">
+                    <i class="fa-fw fa fa-clone"></i>
+                    轮播任务</span></a>
+            </li>
+
+            <li>
+                <a href="/api/admin/task/notice/">
+                    <i class="fa-fw fa fa-pencil-square-o"></i>
+                    网站公告</span></a>
+            </li>
+
+            <li>
+                <a href="/api/admin/task/imagetype/">
+                    <i class="fa-fw fa fa-file-image-o"></i>
+                    图片类型列表</span></a>
+            </li>
+
+
+            <li class="nav-header ">
+
+                用户
+
+            </li>
+
+            <li>
+                <a href="/api/admin/user/userprofile/">
+                    <i class="fa-fw fa fa-user"></i>
+                    用户列表</span></a>
+            </li>
+
+            <li>
+                <a href="/api/admin/user/school/">
+                    <i class="fa-fw fa fa-building"></i>
+                    学校列表</span></a>
+            </li>
+
+            <li>
+                <a href="/api/admin/user/userstatusdate/">
+                    <i class="fa-fw fa fa-star"></i>
+                    会员到期设置</span></a>
+            </li>
+
+
+            <li class="nav-header ">
+
+                用户操作
+
+            </li>
+
+            <li>
+                <a href="/api/admin/user_operation/usertaskreceive/">
+                    <i class="fa-fw fa fa-file-text"></i>
+                    任务详情列表</span></a>
+            </li>
+
+            <li>
+                <a href="/api/admin/user_operation/vipcode/">
+                    <i class="fa-fw fa fa-puzzle-piece"></i>
+                    充值码列表</span></a>
+            </li>
+
+            <li>
+                <a href="/api/admin/user_operation/wxorder/">
+                    <i class="fa-fw fa fa-reorder"></i>
+                    微信订单</span></a>
+            </li>
+
+            <li>
+                <a href="/api/admin/user_operation/taskimage/">
+                    <i class="fa-fw fa fa-image"></i>
+                    上传图片列表</span></a>
+            </li>
+
+
+            <li class="nav-header ">
+
+                第三方登陆
+
+            </li>
+
+            <li>
+                <a href="/api/admin/social_django/usersocialauth/">
+                    <i class="fa-fw fa fa-circle-o"></i>
+                    第三方登陆列表</span></a>
+            </li>
+
+
+            <li class="nav-header ">
+
+                管理
+
+            </li>
+
+            <li>
+                <a href="/api/admin/xadmin/log/">
+                    <i class="fa-fw fa fa-cog"></i>
+                    日志记录</span></a>
+            </li>
+
+
+            <li class="nav-header ">
+
+                认证和授权
+
+            </li>
+
+            <li>
+                <a href="/api/admin/auth/group/">
+                    <i class="fa-fw fa fa-group"></i>
+                    组</span></a>
+            </li>
+
+            <li>
+                <a href="/api/admin/auth/permission/">
+                    <i class="fa-fw fa fa-lock"></i>
+                    权限</span></a>
+            </li>
+
+
+        </ul>
+
+
+        <ul class="well nav nav-list nav-sitemenu show-sm">
+            <li class="app_menu">
+                <a href="/api/admin/"><i class="icon fa-fw fa fa-home"></i></a>
+                <hr/>
+            </li>
+
+            <li class="app_menu dropdown-submenu ">
+                <a href="#" class="section">
+                    <i class="icon fa-fw fa fa-circle-o"></i>
+                </a>
+                <hr/>
+                <ul class="dropdown-menu">
+
+                    <li>
+                        <a href="me_test/">
+                            <i class="fa-fw info-sign"></i>
+                            操作</span></a>
+                    </li>
+                    <li>
+        <a href="/status/">
+        <i class="fa-fw info-sign"></i>
+        服务器可视化</a>
+      </li>
+
+                </ul>
+            </li>
+
+            <li class="app_menu dropdown-submenu ">
+                <a href="#" class="section">
+                    <i class="icon fa-fw fa fa-tasks"></i>
+
+                </a>
+                <hr/>
+                <ul class="dropdown-menu">
+
+                    <li>
+                        <a href="/api/admin/task/task/">
+                            <i class="fa-fw fa fa-tasks"></i>
+                            任务列表</span></a>
+                    </li>
+
+                    <li>
+                        <a href="/api/admin/task/othertask/">
+                            <i class="fa-fw fa fa-tasks"></i>
+                            其他任务</span></a>
+                    </li>
+
+                    <li>
+                        <a href="/api/admin/task/bannertask/">
+                            <i class="fa-fw fa fa-clone"></i>
+                            轮播任务</span></a>
+                    </li>
+
+                    <li>
+                        <a href="/api/admin/task/notice/">
+                            <i class="fa-fw fa fa-pencil-square-o"></i>
+                            网站公告</span></a>
+                    </li>
+
+                    <li>
+                        <a href="/api/admin/task/imagetype/">
+                            <i class="fa-fw fa fa-file-image-o"></i>
+                            图片类型列表</span></a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li class="app_menu dropdown-submenu ">
+                <a href="#" class="section">
+                    <i class="icon fa-fw fa fa-user"></i>
+
+                </a>
+                <hr/>
+                <ul class="dropdown-menu">
+
+                    <li>
+                        <a href="/api/admin/user/userprofile/">
+                            <i class="fa-fw fa fa-user"></i>
+                            用户列表</span></a>
+                    </li>
+
+                    <li>
+                        <a href="/api/admin/user/school/">
+                            <i class="fa-fw fa fa-building"></i>
+                            学校列表</span></a>
+                    </li>
+
+                    <li>
+                        <a href="/api/admin/user/userstatusdate/">
+                            <i class="fa-fw fa fa-star"></i>
+                            会员到期设置</span></a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li class="app_menu dropdown-submenu ">
+                <a href="#" class="section">
+                    <i class="icon fa-fw fa fa-file-text"></i>
+
+                </a>
+                <hr/>
+                <ul class="dropdown-menu">
+
+                    <li>
+                        <a href="/api/admin/user_operation/usertaskreceive/">
+                            <i class="fa-fw fa fa-file-text"></i>
+                            任务详情列表</span></a>
+                    </li>
+
+                    <li>
+                        <a href="/api/admin/user_operation/vipcode/">
+                            <i class="fa-fw fa fa-puzzle-piece"></i>
+                            充值码列表</span></a>
+                    </li>
+
+                    <li>
+                        <a href="/api/admin/user_operation/wxorder/">
+                            <i class="fa-fw fa fa-reorder"></i>
+                            微信订单</span></a>
+                    </li>
+
+                    <li>
+                        <a href="/api/admin/user_operation/taskimage/">
+                            <i class="fa-fw fa fa-image"></i>
+                            上传图片列表</span></a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li class="app_menu dropdown-submenu ">
+                <a href="#" class="section">
+                    <i class="icon fa-fw fa fa-circle-o"></i>
+                </a>
+                <hr/>
+                <ul class="dropdown-menu">
+
+                    <li>
+                        <a href="/api/admin/social_django/usersocialauth/">
+                            <i class="fa-fw fa fa-circle-o"></i>
+                            第三方登陆列表</span></a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li class="app_menu dropdown-submenu ">
+                <a href="#" class="section">
+                    <i class="icon fa-fw fa fa-cog"></i>
+
+                </a>
+                <hr/>
+                <ul class="dropdown-menu">
+
+                    <li>
+                        <a href="/api/admin/xadmin/log/">
+                            <i class="fa-fw fa fa-cog"></i>
+                            日志记录</span></a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li class="app_menu dropdown-submenu ">
+                <a href="#" class="section">
+                    <i class="icon fa-fw fa fa-group"></i>
+
+                </a>
+                <hr/>
+                <ul class="dropdown-menu">
+
+                    <li>
+                        <a href="/api/admin/auth/group/">
+                            <i class="fa-fw fa fa-group"></i>
+                            组</span></a>
+                    </li>
+
+                    <li>
+                        <a href="/api/admin/auth/permission/">
+                            <i class="fa-fw fa fa-lock"></i>
+                            权限</span></a>
+                    </li>
+
+                </ul>
+            </li>
+
+
+        </ul>
+
+
+    </div>
+
+    <div id="content-block" class="col-sm-11 col-md-10">
+        <div class="dashboard row">
+            <div class="col-sm-12 column">
+                <div class="container" style="width:70%;">
+                    <div class="row clearfix">
+                    {% if data == 'success' %}
+                    <div class="alert alert-dismissable alert-success">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          系统打包中，下载地址稍后发送到您邮箱
+        </div>
+                    {% endif %}
+                        <div class="panel panel-default">
+                            <h3>用户数据导出</h3>
+                            <div class="panel-body">
+                                <form role="form" action="/api/exportexcel/" method="get">
+                                    <div class="form-group">
+                                        <label for="start_time">开始时间</label>
+                                        <input type="date" name="start_time">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="end_time">结束时间</label>
+                                        <input type="date" name="end_time">
+                                    </div>
+                                    <button type="submit" class="btn btn-default">导出</button>
+
+                                </form>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <h3>生成充值码</h3>
+                            <div class="panel-body">
+                                <form role="form" action="/api/generatevipcode/" method="post">
+                                    <input type="hidden" name="csrfmiddlewaretoken" value="BPPKQtgkmzyCr1yijp8SWDGxbnyRnMtXpV51qMIVGqYL3ndgXhz4oNkohAjh1U2q">
+                                    <div class="form-group">
+                                        <label for="前缀">前缀</label><input type="text" class="form-control"
+                                                                         name="prefix"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="数量">数量</label><input type="text" class="form-control"
+                                                                         name="numb"/>
+                                    </div>
+                                    <button type="submit" class="btn btn-default">生成</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <h3>打包</h3>
+                            <div class="panel-body">
+                                <form role="form" action="/api/exportmovieimagesview/" method="get">
+                                    <div class="form-group">
+                                        <label for="任务名">任务名</label>
+                                        <select class="form-control" name="task">
+                                            {% for v in select %}
+    <option>{{ v }}</option>
+{% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="type" value="0" checked> 按用户分类
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="type" value="1">按标签分类
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="center-block" >
+                                        <button type="submit" class="btn btn-default">生成链接</button>
+                                    </div>
+                                    <div>
+                                        <span>{{ data }} </span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+
+    </div>
+
+
+</div>
+
+</div>
+<input type='hidden' id='_portal_key' value='dashboard:home:pos'/>
+
+</div>
+</div>
+
+
+<div id="footer">
+    <hr/>
+    <footer class="text-center">
+        <p>将军令</p>
+    </footer>
+</div>
+
+
+<script type="text/javascript" src="/static/xadmin/vendor/jquery-ui/jquery.ui.core.js"></script>
+<script type="text/javascript" src="/static/xadmin/vendor/jquery-ui/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="/static/xadmin/vendor/jquery-ui/jquery.ui.mouse.js"></script>
+<script type="text/javascript" src="/static/xadmin/vendor/jquery-ui/jquery.ui.sortable.js"></script>
+<script type="text/javascript" src="/static/xadmin/vendor/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="/static/xadmin/js/xadmin.main.js"></script>
+<script type="text/javascript" src="/static/xadmin/js/xadmin.responsive.js"></script>
+<script type="text/javascript" src="/static/xadmin/vendor/jquery-ui/jquery.ui.effect.js"></script>
+<script type="text/javascript" src="/static/xadmin/js/xadmin.plugin.themes.js"></script>
+<script type="text/javascript" src="/static/xadmin/js/xadmin.page.dashboard.js"></script>
+<script type="text/javascript" src="/static/xadmin/js/xadmin.plugin.portal.js"></script>
+
+
+</body>
+</html>
