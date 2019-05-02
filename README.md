@@ -124,9 +124,11 @@ nohup命令运行的进程需要通过pid强制终止
 >ps aux|grep celery 
 或者
 >ps -ef|grep celery
+
 __但建议用第一种,具体自行了解__
+
 然后通过
 >kill -s 9 pid 
-强制终止进程
+强制终止进程.
 
 
