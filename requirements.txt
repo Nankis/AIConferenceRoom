@@ -42,7 +42,7 @@ Pillow==5.4.1
 PyJWT==1.5.3
 PyMySQL==0.9.3
 pytz==2017.2
-PyYAML==3.12
+PyYAML==5.4
 qiniu==7.2.0
 redis==2.10.6
 requests==2.18.4
